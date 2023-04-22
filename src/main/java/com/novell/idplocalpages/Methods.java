@@ -3,7 +3,7 @@ package com.novell.idplocalpages;
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Page;
 
-import static com.novell.factory.HelperClass.*;
+import static com.novell.pwfactory.HelperClass.*;
 import static com.novell.idplocalpages.UserStores.userName;
 
 public class Methods {

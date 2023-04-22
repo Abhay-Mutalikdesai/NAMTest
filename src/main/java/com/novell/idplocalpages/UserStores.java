@@ -4,7 +4,7 @@ import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.LoadState;
 
-import static com.novell.factory.HelperClass.*;
+import static com.novell.pwfactory.HelperClass.*;
 
 public class UserStores {
     final Page page;

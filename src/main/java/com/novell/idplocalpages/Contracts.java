@@ -2,7 +2,7 @@ package com.novell.idplocalpages;
 
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Page;
-import com.novell.factory.HelperClass;
+import com.novell.pwfactory.HelperClass;
 
 public class Contracts {
     final private Page page;

@@ -1,4 +1,4 @@
-package com.novell.factory;
+package com.novell.pwfactory;
 
 import com.microsoft.playwright.*;
 

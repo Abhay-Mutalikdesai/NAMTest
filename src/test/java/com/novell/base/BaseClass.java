@@ -2,8 +2,8 @@ package com.novell.base;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Tracing;
-import com.novell.factory.initPlaywright;
-import com.novell.factory.HelperClass;
+import com.novell.pwfactory.initPlaywright;
+import com.novell.pwfactory.HelperClass;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeTest;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import static com.novell.factory.initPlaywright.*;
+import static com.novell.pwfactory.initPlaywright.*;
 
 public class BaseClass {
     protected Page page;
@@ -24,7 +24,7 @@ public class BaseClass {
     final private String logoutLoc = "#logout2";
 
     @BeforeTest
-    public void setUp() throws IOException {
+    public void beforeTestSetUp() throws IOException {
         prop = initPlaywright.initProp();
         page = initPlaywright.initBrowser(prop);
         page.navigate(prop.getProperty("url"));
@@ -33,7 +33,7 @@ public class BaseClass {
         page.click(submitLoc);
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void afterMethodTearDown(ITestResult result){
         if(result.getStatus()!=1)
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("failedTest.png")).setFullPage(true));
