@@ -29,7 +29,7 @@ public class HelperClass {
         return randText.replaceAll("_", "a").replaceAll("-", "z").substring(0, 10);
     }
 
-    public static String getCurTime() {
-        return java.time.ZonedDateTime.now(java.time.ZoneId.of("Asia/Kolkata")).format(java.time.format.DateTimeFormatter.ofPattern("ddMMyyyy-HHmmss"));
-    }
+//    public static String getCurTime() {
+//        return java.time.ZonedDateTime.now(java.time.ZoneId.of("Asia/Kolkata")).format(java.time.format.DateTimeFormatter.ofPattern("ddMMyyyy-HHmmss"));
+//    }
 }

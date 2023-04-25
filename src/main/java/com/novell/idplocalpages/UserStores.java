@@ -10,6 +10,7 @@ public class UserStores {
     final Page page;
     final FrameLocator iframe;
 
+    final private String dashboardLoc = "#menu0";
     final private String idpClusterLoc = "#gwt-debug-LinkWithStatus_link_IDP-Cluster";
     final private String localLoc = "a[onclick=\"selectChapter('LocalChapter'); return false;\"] span[class=\"nidstab1u\"]";
     final private String adminNameLoc = "#AdminName";
@@ -28,10 +29,12 @@ public class UserStores {
     final String ipAdd = "164.99.184.51";
     final String searchContext = "o=novell";
 
-    public UserStores(Page page) {
+    public UserStores(Page page) throws InterruptedException {
         this.page = page;
         this.iframe = iframeLocator(page);
+        frameLocator(page).locator(dashboardLoc).click();
         page.waitForLoadState(LoadState.LOAD);
+        Thread.sleep(1000);
         iframe.locator(idpClusterLoc).click();
         iframe.locator(localLoc).click();
     }
@@ -45,7 +48,6 @@ public class UserStores {
         iframe.locator(adminPasswordLoc).fill(pwd);
         iframe.locator(confirmPasswordLoc).fill(pwd);
         iframe.locator(directoryTypeLoc).selectOption("1");
-        iframe.locator(newLoc).first().click();
         iframe.locator(newLoc).first().click();
         iframe.locator(replicaDisplayNameLoc).fill(userName + "Replica");
         iframe.locator(ipAddressLoc).fill(ipAdd);

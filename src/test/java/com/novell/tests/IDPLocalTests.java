@@ -5,9 +5,8 @@ import com.novell.idplocalpages.*;
 import org.testng.annotations.Test;
 
 public class IDPLocalTests extends BaseClass {
-
     @Test(priority = 1)
-    public void userStoresTest() {
+    public void userStoresTest() throws InterruptedException {
         new UserStores(page).createUser();
     }
 

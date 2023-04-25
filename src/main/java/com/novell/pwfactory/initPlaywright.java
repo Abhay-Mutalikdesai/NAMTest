@@ -12,7 +12,7 @@ public class initPlaywright {
     public static BrowserContext browserContext;
     public static Page page;
     public static Properties prop;
-    private static String propPath = "./src/resources/com.novell.config/config.properties";
+    private static String propPath = "./src/test/resources/config/config.properties";
 
     public static Properties initProp() throws IOException {
         FileInputStream input = new FileInputStream(propPath);
@@ -37,7 +37,7 @@ public class initPlaywright {
                 browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(headless).setSlowMo(100));
                 break;
             case "chrome":
-                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(headless).setSlowMo(100));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(headless).setSlowMo(1000));
                 break;
             case "edge":
                 browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(headless).setSlowMo(100));

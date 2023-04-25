@@ -9,18 +9,21 @@ import org.testng.annotations.Test;
 public class CertificatesTests extends BaseClass {
     @Test(priority = 1)
     public void createCertUsingLocalCATest() {
-        new CreateCertificate(page).createCert("LocalCA");
+        new CreateCertificate(page)
+                .createCert("LocalCA");
     }
 
     @Test(priority = 2)
-    public void createCertUsingExternalCA() {
-        new CreateCertificate(page).createCert("ExternalCA");
-        new ImportSignedCert(page).importSignedCert();
+    public void createCertUsingExternalCATest() {
+        new CreateCertificate(page)
+                .createCert("ExternalCA");
+        new ImportSignedCert(page)
+                .importSignedCert();
     }
 
-
     @Test(priority = 3)
-    public void CleanUpCert() {
-        new CleanupCert(page).deleteCert();
+    public void CleanUpCertTest() {
+        new CleanupCert(page)
+                .deleteCert();
     }
 }

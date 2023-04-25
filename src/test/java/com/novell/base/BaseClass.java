@@ -2,7 +2,6 @@ package com.novell.base;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Tracing;
-import com.novell.pwfactory.initPlaywright;
 import com.novell.pwfactory.HelperClass;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -15,7 +14,7 @@ import java.nio.file.Paths;
 import static com.novell.pwfactory.initPlaywright.*;
 
 public class BaseClass {
-    protected Page page;
+    protected static Page page;
 
     final private String usernameLoc = "input[name=\"username\"]";
     final private String passwordLoc = "input[name=\"password\"]";
@@ -24,23 +23,23 @@ public class BaseClass {
     final private String logoutLoc = "#logout2";
 
     @BeforeTest
-    public void beforeTestSetUp() throws IOException {
-        prop = initPlaywright.initProp();
-        page = initPlaywright.initBrowser(prop);
+    public void setUp() throws IOException {
+        prop = initProp();
+        this.page = initBrowser(prop);
         page.navigate(prop.getProperty("url"));
         page.fill(usernameLoc, prop.getProperty("username"));
         page.fill(passwordLoc, prop.getProperty("password"));
         page.click(submitLoc);
     }
 
-    @AfterMethod (alwaysRun = true)
-    public void afterMethodTearDown(ITestResult result){
-        if(result.getStatus()!=1)
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("failedTest.png")).setFullPage(true));
-    }
+//    @AfterMethod(alwaysRun = true)
+//    public void afterMethodTearDown(ITestResult result) {
+//        if (result.getStatus() != 1)
+//            this.page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("failedTest.png")).setFullPage(true));
+//    }
 
     @AfterTest
-    public void afterTestTearDown() {
+    public void tearDown() {
         HelperClass.frameLocator(page).locator(dropdownLoc).click();
         HelperClass.frameLocator(page).locator(logoutLoc).click();
         browserContext.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace.zip")));

@@ -9,8 +9,9 @@ public class CleanupCert {
     final Page page;
     final FrameLocator iframe;
 
-    final private String certLCACheckboxLoc = "input[type='checkbox']:left-of(a:text('demoCertLCA'))";
-    final private String certECACheckboxLoc = "input[type='checkbox']:left-of(a:text('demoCertECA'))";
+    final private String headerCheckboxLoc = "input[name='headerCheckbox']";
+//    final private String certLCACheckboxLoc = "input[type='checkbox']:left-of(a:text('demoCertLCA'))";
+//    final private String certECACheckboxLoc = "input[type='checkbox']:left-of(a:text('demoCertECA'))";
     final private String deleteLoc = "a[title='Delete']";
     final private String deleteOkLoc = "#buttondiv:has-text('OK')";
 
@@ -20,10 +21,11 @@ public class CleanupCert {
     }
 
     public void deleteCert() {
-        if (iframe.locator(certLCACheckboxLoc).first().isVisible())
-            iframe.locator(certLCACheckboxLoc).first().check();
-        if (iframe.locator(certECACheckboxLoc).first().isVisible())
-            iframe.locator(certECACheckboxLoc).first().check();
+        iframe.locator(headerCheckboxLoc).check();
+//        if (iframe.locator(certLCACheckboxLoc).first().isVisible())
+//            iframe.locator(certLCACheckboxLoc).first().check();
+//        if (iframe.locator(certECACheckboxLoc).first().isVisible())
+//            iframe.locator(certECACheckboxLoc).first().check();
         iframe.locator(deleteLoc).click();
         iframe.locator(deleteOkLoc).click();
     }

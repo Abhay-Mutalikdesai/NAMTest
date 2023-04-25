@@ -10,6 +10,7 @@ public class ImportSignedCert {
     final Page page;
     final FrameLocator iframe;
 
+    final String demoCertECALoc = "a:text('demoCertECA')";
     final String csrTextLoc = "#csrText";
     final String importSignedCertLabelLoc = "#importSignedCert_Label";
     final String certTextLoc = "#pasteCertText0";
@@ -25,7 +26,7 @@ public class ImportSignedCert {
     public ImportSignedCert(Page page) {
         this.page = page;
         this.iframe = iframeLocator(page);
-        iframe.locator("a:text('demoCertECA')").click();
+        iframe.locator(demoCertECALoc).click();
     }
 
     public void importSignedCert() {

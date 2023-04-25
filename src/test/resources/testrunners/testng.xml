@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="NAM">
+    <test name="NAMTest">
+        <classes>
+            <class name="com.novell.tests.IDPLocalTests"></class>
+            <class name="com.novell.tests.CertificatesTests"></class>
+        </classes>
+    </test>
+</suite>
